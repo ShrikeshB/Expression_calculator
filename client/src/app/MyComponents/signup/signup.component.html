@@ -1,0 +1,17 @@
+<main>
+    <app-nav-bar />
+    <section class="signup">
+        <form action="" #SignupForm="ngForm" (ngSubmit)=signup(SignupForm.value)>
+            <h1>Sign up</h1><br>
+            <label for="">Email</label>
+            <input type="text" ngModel name="email" placeholder="example@gmail.com">
+
+            <label for="">Password</label>
+            <input type="password" ngModel name="password" placeholder="XXXXXX">
+
+            <label for="">Confirm Password</label>
+            <input type="password" name="conifrm_password" placeholder="XXXXXX">
+            <button class="primary-btn" type="submit">sign up</button>
+        </form>
+    </section>
+</main>

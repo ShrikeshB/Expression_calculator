@@ -1,0 +1,40 @@
+* {
+  font-family: poppins;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #191919;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+.secondary-btn {
+  background-color: #313233;
+  color: white;
+  border-radius: 10em;
+  border: none;
+  padding: 0.7em 0em;
+  width: 120px;
+  cursor: pointer;
+}
+.primary-btn {
+  background-color: #ffc107;
+  border-radius: 10em;
+  border: none;
+  padding: 0.7em 0em;
+  width: 120px;
+
+  cursor: pointer;
+}
+
+input {
+  background-color: #191717;
+  border: 1px solid #343434;
+  border-radius: 5px;
+  width: 100%;
+  padding: .7em 2em;
+  color: white;
+}

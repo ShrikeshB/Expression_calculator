@@ -1,0 +1,29 @@
+.login {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+
+    form {
+        width: 30%;
+        background-color: #1E1E1E;
+        padding: 2em 2em;
+        box-shadow: 1px 1px 8px #0000004f;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+        label {
+            margin-left: .6em;
+            align-self: flex-start;
+        }
+
+        input {
+            margin-bottom: 2em;
+            margin-top: .3em;
+        }
+    }
+
+}
