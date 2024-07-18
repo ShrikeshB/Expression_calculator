@@ -1,15 +1,15 @@
 <main>
-    <app-nav-bar />
+    <app-nav-bar></app-nav-bar>
     <section class="login">
-        <form action="">
-            <h1>login</h1><br>
-            <label for="">Email</label>
-            <input type="text" placeholder="example@gmail.com">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+            <h1>Login</h1><br>
+            <label for="email">Email</label>
+            <input type="text" name="email" placeholder="example@gmail.com" ngModel>
 
-            <label for="">Password</label>
-            <input type="password" name="" id=" " placeholder="XXXXXX">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="XXXXXX" ngModel>
 
-            <button class="primary-btn">Login</button>
+            <button class="primary-btn" type="submit">Login</button>
         </form>
     </section>
-</main> 
+</main>

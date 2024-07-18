@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const users_route = require("./routes/users_route");
+const Expression_router = require("./routes/Expression_router");
 const app = express();
 
 const mongoose = require("mongoose");
@@ -14,11 +15,12 @@ app.use(bodyParser.json());
 
 app.get("/test", (req, res) => {
   console.log("im here!");
-  res.status(200).json({message:"hello there"})
+  res.status(200).json({ message: "hello there" });
 });
 
 // Routes
 app.use("/users", users_route);
+app.use("/expression", Expression_router);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

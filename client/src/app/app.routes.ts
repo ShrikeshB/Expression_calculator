@@ -8,6 +8,6 @@ export const routes: Routes = [
   { path: '', redirectTo: '/PostfixEvaluator', pathMatch: 'full' },
   { path: 'PostfixEvaluator', component: PostfixEvaluatorComponent },
   { path: 'Signup', component: SignupComponent },
-  { path: 'Signin', component: LoginComponent },
+  { path: 'signin', component: LoginComponent },
   { path: 'InfixToPostfix', component: InfixToPostfixComponent },
 ];

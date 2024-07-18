@@ -28,6 +28,11 @@
       </div>
       <div class="history">
         <h1>History</h1>
+        <ul>
+          <li *ngFor="let expression of expression_ls">
+            {{expression.expression}}
+          </li>
+        </ul>
 
       </div>
       <div class="steps" *ngIf="flag">
