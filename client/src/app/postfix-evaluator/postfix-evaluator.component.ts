@@ -118,6 +118,7 @@ export class PostfixEvaluatorComponent implements OnInit {
 
   push(element: any) {
     this.items.push(element);
+    
   }
 
   pop() {
@@ -170,8 +171,11 @@ export class PostfixEvaluatorComponent implements OnInit {
     this.result = '';
     this.items.length = 0;
     this.steps.splice(0, this.steps.length);
+    
     this.counter = 0;
-    let expression = item.expression;
+    let expression= item.expression.replace(/\s+/g, '');
+    console.log(expression);
+    
     for (let i = 0; i < expression.length; i++) {
       this.checkForOperator(expression[i]);
     }

@@ -5,9 +5,9 @@ import { SignupComponent } from './MyComponents/signup/signup.component';
 import { LoginComponent } from './MyComponents/login/login.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/PostfixEvaluator', pathMatch: 'full' },
+  {path:"",component:PostfixEvaluatorComponent},
   { path: 'PostfixEvaluator', component: PostfixEvaluatorComponent },
   { path: 'Signup', component: SignupComponent },
-  { path: 'signin', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'InfixToPostfix', component: InfixToPostfixComponent },
 ];

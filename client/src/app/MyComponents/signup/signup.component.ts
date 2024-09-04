@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./style/signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router:Router) {}
 
   ngOnInit(): void {
     // this.fetchData();
@@ -30,6 +30,21 @@ export class SignupComponent implements OnInit {
     this.http.get('http://localhost:3000/test').subscribe((res) => {
       console.log(res);
     });
+  }
+
+  setSessionData(value: string) {
+    sessionStorage.setItem('UID', value);
+  }
+
+  getUserId(email: string) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http
+      .get('http://localhost:3000/users/getUserIdViaEmail/' + email, { headers })
+      .subscribe((res:any) => {
+        console.log('Signup response:', res);
+        this.setSessionData(res.userId);
+        this.router.navigate(['/PostfixEvaluator']);
+      });
   }
 
   public signup(formData: any) {
@@ -44,6 +59,7 @@ export class SignupComponent implements OnInit {
       .post('http://localhost:3000/users/register', data, { headers })
       .subscribe((res) => {
         console.log('Signup response:', res);
+        this.getUserId(data.email);
       });
   }
 }
