@@ -27,7 +27,7 @@ import {
   ],
 
   templateUrl: './postfix-evaluator.component.html',
-  styleUrls: ['./style/app.component.css'],
+  styleUrls: ['./style/app.component.scss'],
 })
 export class PostfixEvaluatorComponent implements OnInit {
   constructor(
