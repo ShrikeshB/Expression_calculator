@@ -56,6 +56,7 @@ export class SignupComponent implements OnInit {
       .subscribe((res) => {
         console.log('Signup response:', res);
         this.getUserId(data.email);
+        this.router.navigate(['/PostfixEvaluator']);
       });
   }
 }

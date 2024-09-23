@@ -1,27 +1,34 @@
 <main>
-
   <app-nav-bar />
 
   <section class="expression-section">
     <div class="container">
       <div class="question">
-        <h1>
-          Postfix expression
-        </h1>
-        <p>An postfix expression (also called Reverse Polish Notation) is a single letter or an operator, preceded by
-          two
-          postfix strings. Every postfix string longer than a single variable contains first and second operands
-          followed
-          by an operator.e.g. A,A B +,A B + C D -.</p>
-        <form #ExpressionForm="ngForm" (ngSubmit)=evaluate(ExpressionForm.value)>
-          <br><br>
+        <h1>Postfix expression</h1>
+        <p>
+          An postfix expression (also called Reverse Polish Notation) is a
+          single letter or an operator, preceded by two postfix strings. Every
+          postfix string longer than a single variable contains first and second
+          operands followed by an operator.e.g. A,A B +,A B + C D -.
+        </p>
+        <form
+          #ExpressionForm="ngForm"
+          (ngSubmit)="evaluate(ExpressionForm.value)"
+        >
+          <br /><br />
 
           <p>Postfix expression(*Only numbers )</p>
-          <input type="text" name="expression" ngModel>
-          <br><br>
+          <input type="text" name="expression" ngModel />
+          <br /><br />
           <p>Result</p>
-          <input type="text" readonly name="result" [ngModel]="result" ngModel>
-          <br><br>
+          <input
+            type="text"
+            readonly
+            name="result"
+            [ngModel]="result"
+            ngModel
+          />
+          <br /><br />
 
           <button class="primary-btn" type="submit">Solve</button>
         </form>
@@ -30,10 +37,9 @@
         <h1>History</h1>
         <ul>
           <li *ngFor="let expression of expression_ls">
-            {{expression.expression}}
+            {{ expression.expression }}
           </li>
         </ul>
-
       </div>
       <div class="steps" *ngIf="flag">
         <div class="contents">
@@ -41,26 +47,26 @@
           <ul>
             <!-- <li class="step-card" *ngFor="let step of steps">{{ step }}</li> -->
             <li *ngFor="let step of steps; let i = index">
-            
               <h3>Step {{ i + 1 }}</h3>
               <div class="step-card">
                 {{ step }}
                 <p></p>
               </div>
+              <p>{{ step[0] }} and {{ step[2] }} popped!</p>
+
               <div class="box-container">
                 <div class="box box1">{{ step[0] }}</div>
                 <div class="box box2">{{ step[1] }}</div>
                 <div class="box box3">{{ step[2] }}</div>
                 <div class="box box4">{{ step[3] }}</div>
-                <div class="box box5">{{ step[4] }}</div>
-            </div>
+                <div class="box box5">{{ step.substring(4) }}</div>
+              </div>
+
+              <p>{{ step.substring(4) }} Added in stack</p>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </section>
-
-
-
 </main>
