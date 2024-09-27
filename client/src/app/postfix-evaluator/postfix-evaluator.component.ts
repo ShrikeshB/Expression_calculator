@@ -37,9 +37,12 @@ export class PostfixEvaluatorComponent implements OnInit {
 
   private items: any[] = [];
   steps: string[] = [];
+  stepsForAnimation: any[] = [];
   flag: boolean = false;
   private uid: string = '';
   private flag_UID: boolean = false;
+  tmp: string = '';
+  operation: string[] = [];
   //! get the UID from the session..
   private getSessionData(key: string) {
     if (isPlatformBrowser(this.platformId)) {
@@ -68,7 +71,6 @@ export class PostfixEvaluatorComponent implements OnInit {
           console.log('History retrieved!', res);
           this.expression_ls = res as any[];
           console.log(this.expression_ls);
-          
         },
         error: (err) => {
           console.error('Error retrieving history:', err);
@@ -97,7 +99,7 @@ export class PostfixEvaluatorComponent implements OnInit {
       .post('http://localhost:3000/expression/postfix_eval', data, { headers })
       .subscribe((res) => {
         console.log('expresion saved!', res);
-        this.getHistory()
+        this.getHistory();
       });
   }
 
@@ -118,7 +120,6 @@ export class PostfixEvaluatorComponent implements OnInit {
 
   push(element: any) {
     this.items.push(element);
-    
   }
 
   pop() {
@@ -133,6 +134,7 @@ export class PostfixEvaluatorComponent implements OnInit {
   }
 
   counter: number = 0;
+  tmp_steps:string[] = []
   checkForOperator(item: any) {
     if (!isNaN(item)) {
       this.push(parseInt(item, 10));
@@ -162,7 +164,16 @@ export class PostfixEvaluatorComponent implements OnInit {
 
       console.log(operand1 + item + operand2 + '=' + this.peek());
       this.steps[this.counter] = operand1 + item + operand2 + '=' + this.peek();
+      this.tmp_steps[this.counter] =operand1 + ' ' + item + ' ' + operand2 + ' ' + '=' + ' ' + this.peek();
+
+      this.tmp =
+        operand1 + ' ' + item + ' ' + operand2 + ' ' + '=' + ' ' + this.peek();
+      // this.operation = this.tmp.split(' '); 
+      // this.stepsForAnimation.push(this.operation); 
+
       this.counter++;
+
+      console.log(this.stepsForAnimation);
     }
   }
 
@@ -171,13 +182,18 @@ export class PostfixEvaluatorComponent implements OnInit {
     this.result = '';
     this.items.length = 0;
     this.steps.splice(0, this.steps.length);
-    
+
     this.counter = 0;
-    let expression= item.expression.replace(/\s+/g, '');
+    let expression = item.expression.replace(/\s+/g, '');
     console.log(expression);
-    
+
     for (let i = 0; i < expression.length; i++) {
       this.checkForOperator(expression[i]);
+    }
+
+    for (let i = 0; i < this.tmp_steps.length; i++) {
+      this.operation = this.tmp_steps[i].split(' ')
+      this.stepsForAnimation.push(this.operation);
     }
 
     if (this.items.length !== 1) {
@@ -192,6 +208,10 @@ export class PostfixEvaluatorComponent implements OnInit {
         this.saveExpression(expression);
       }
     }
+  }
+
+  getDigits(input: string): string {
+    return input.replace(/\D/g, '');
   }
 }
 

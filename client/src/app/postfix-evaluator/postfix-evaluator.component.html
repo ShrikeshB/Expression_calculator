@@ -52,17 +52,22 @@
                 {{ step }}
                 <p></p>
               </div>
-              <p>{{ step[0] }} and {{ step[2] }} popped!</p>
+              <p style="color:red">{{ stepsForAnimation[i][0] }} and {{ stepsForAnimation[i][2] }} popped!</p>
 
               <div class="box-container">
-                <div class="box box1">{{ step[0] }}</div>
-                <div class="box box2">{{ step[1] }}</div>
-                <div class="box box3">{{ step[2] }}</div>
-                <div class="box box4">{{ step[3] }}</div>
-                <div class="box box5">{{ step.substring(4) }}</div>
+                <div class="box box1">{{ stepsForAnimation[i][0] }}</div>
+                <div class="box box2">{{ stepsForAnimation[i][1] }}</div>
+                <div class="box box3">{{ stepsForAnimation[i][2] }}</div>
+                <!-- <div class="box box4">{{ step[3] }}</div> -->
+                <div class="box box4">{{ stepsForAnimation[i][3]}}</div>
+
+                <div class="box box5">{{ stepsForAnimation[i][4]}}</div>
+                <!-- <div class="box box5">{{ getDigits(step.substring(4)) }}</div> -->
               </div>
 
-              <p>{{ step.substring(4) }} Added in stack</p>
+              <p style="color:green">{{ stepsForAnimation[i][4]}} Added in stack</p>
+
+              
             </li>
           </ul>
         </div>
